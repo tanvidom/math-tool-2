@@ -1,0 +1,109 @@
+ window.onload = function()
+ {
+ var person = [];
+ var part1;
+ var part2;
+ var part3;
+ var plate1;
+ var plate2;
+ var button;
+var logo;
+var logo1
+var button;
+ var arr_selected = new Array(8);
+ var group_of_children;
+ var mouseClicks = new Array(8);
+ var button1;
+ var text_inst;
+ var game = new Phaser.Game(800, 600);
+ var playGame = function(game){}
+ playGame.prototype = {
+         preload : function()
+        {
+         game.load.image('logo','assets/iconcf.png');
+         game.load.image('title','assets/title.png');
+         game.load.image('button','assets/strt-button.png');
+         game.load.atlasJSONHash('children', 'assets/people3.png', 'assets/child_people3_tp_hash.json'); 
+         game.load.atlasJSONHash('texts', 'assets/text_files_1.png', 'assets/text_sprites_1.json'); 
+         game.load.image('chocolate','assets/part.png');
+         game.load.image('chocolate1','assets/part2.png');
+         game.load.image('button3','assets/strt-button.png');
+        },
+         create : function()
+        {
+           logo =   game.add.sprite(this.world.centerX,this.world.centerY,'logo');
+           logo.anchor.setTo(0.5,0.5);//set the anchor so that the image is centered on the stage
+           logo1 =   game.add.sprite(this.world.centerX,this.world.centerY-150,'title');
+           logo1.anchor.setTo(0.5,0.5);//set the anchor so that the image is centered on the stage
+button = game.add.button(this.world.centerX-100,this.world.centerY+100, 'button', this.actionOnClick);
+logo.anchor.setTo(0.5,0.5);
+
+},
+
+      actionOnClick: function()
+     {
+     game.state.start('selecting_friends');
+     console.log('hi');
+     }
+}
+var SelectingFriends = function(game){}
+SelectingFriends.prototype = {
+        preload : function()
+         {
+         },
+        create : function()
+          {
+           mouseClicks = [0,0,0,0,0,0,0];
+           var name_of_sprites = ['child1','child2','child3','child4'];
+           for (var i =0; i < 4; i++)
+            {
+             var height = 50;
+             var width = 50;
+             person[i]=game.add.sprite(height + (i*200), width, 'children', name_of_sprites[i]);
+              person[i].inputEnabled = true;
+               person[i].inputEnabled = true;
+               person[i].events.onInputDown.add(this.onthis1,{i:i});
+            }
+           button1 = game.add.sprite(350,400,'texts','sprite1');
+           button1.inputEnabled = true;
+           button1.events.onInputDown.add(this.nextStage, this);
+           var style = { font: "bold 32px Arial", fill: "#fff", boundsAlignH: "center", boundsAlignV: "middle" };
+           text_inst = game.add.text(100,200,"Select upto 4 friends who share food",style);
+
+          },
+      onthis1 : function()
+{
+
+ mouseClicks[i]++;
+if (mouseClicks[i]%2!=0)
+{
+  arr_selected[i] = 1;
+}
+else
+{
+  arr_selected[i] = 0;
+}
+console.log(arr_selected[i]);
+}
+         nextStage : function()
+{
+for(var i=0;i<person.length;i++)
+{ 
+if(arr_selected[i] == 1)
+{
+group_of_children.push(person[i]);
+}
+}
+game.state.start('selecting_food');
+}
+}
+var SelectingFood = function(game){}
+   SelectingFood.prototype {
+     create : function(){console.log('higdje');}
+}
+     game.state.add('PlayGame', playGadme);
+     game.state.add('selecting_friends', SelectingFriends);
+     game.state.add('selecting_food',SelectingFood);
+     game.state.start('PlayGame');
+}
+   

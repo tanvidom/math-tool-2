@@ -1,4 +1,4 @@
-var LevelThreeState = function()
+var LevelFiveState = function()
 {
 
 };
@@ -9,16 +9,16 @@ var plate1;
 var plate2;
 var button;
 
-LevelThreeState.prototype.init = function(){
+LevelFiveState.prototype.init = function(){
 };
 
-LevelThreeState.prototype.preload = function(){
+LevelFiveState.prototype.preload = function(){
      this.load.atlasJSONHash('chocolate', 'assets/chocolates1.png', 'assets/chocolates1_tp_hash.json'); 
      this.load.atlasJSONHash('table','assets/table.png','assets/tables_sprite.json'); 
      this.load.image('button3','assets/strt-button.png');
 };
 
-LevelThreeState.prototype.create = function()
+LevelFiveState.prototype.create = function()
 {
  part1 = this.add.sprite(0, 0, 'chocolate', 'sprite1');
  part2 = this.add.sprite(0, 50, 'chocolate', 'sprite2');
@@ -32,11 +32,11 @@ LevelThreeState.prototype.create = function()
   
 };
 
-LevelThreeState.prototype.update = function()
+LevelFiveState.prototype.update = function()
 {
 
 };
-LevelThreeState.prototype.onthis = function()
+LevelFiveState.prototype.onthis = function()
 {
 part1.loadTexture('chocolate','sprite2');
 part1.inputEnabled = true;
@@ -46,7 +46,7 @@ part3.input.enableDrag(true);
 part1.input.enableDrag(true);
 
 };
-LevelThreeState.prototype.actionOnClick = function()
+LevelFiveState.prototype.actionOnClick = function()
 {
 if (part3.overlap(plate1))
 {

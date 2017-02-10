@@ -9,17 +9,22 @@ var plate1;
 var plate2;
 var button;
 
-LevelThreeState.prototype.init = function(){
+
+LevelThreeState.prototype.init = function()
+{
+
 };
 
 LevelThreeState.prototype.preload = function(){
-     this.load.atlasJSONHash('chocolate', 'assets/chocolates1.png', 'assets/chocolates1_tp_hash.json'); 
-     this.load.atlasJSONHash('table','assets/table.png','assets/tables_sprite.json'); 
-     this.load.image('button3','assets/strt-button.png');
+    
 };
 
 LevelThreeState.prototype.create = function()
 {
+ group_of_children.person1.x = 100;
+ group_of_children.person1.y = 100;
+
+ 
  part1 = this.add.sprite(0, 0, 'chocolate', 'sprite1');
  part2 = this.add.sprite(0, 50, 'chocolate', 'sprite2');
  plate1 = this.add.sprite(50,200, 'table','table1');
@@ -29,6 +34,7 @@ LevelThreeState.prototype.create = function()
   part2.events.onInputDown.add(this.onthis, this);
 
   button = this.add.button(300,300, 'button3', this.actionOnClick);
+  console.log('with 2');
   
 };
 

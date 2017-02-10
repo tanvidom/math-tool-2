@@ -3,25 +3,12 @@
     <head>  
         <meta charset="utf-8" />
         <title> Cookie cutting game </title>
-        <script type="text/javascript" src="src/phaser.min.js"></script>
-        <script type="text/javascript" src="src/menu.js"></script>   
-        <script type="text/javascript" src="src/selecting_friends.js"></script>  
-         <script type="text/javascript" src="src/selecting_food.js"></script>  
-         <script type="text/javascript" src="src/food_cuter.js"></script>  
-        <script type ="text/javascript">
-
-        window.onload = function() {
-   var game = new Phaser.Game(800, 600, Phaser.AUTO, 'game_stage');
- game.state.add('menu',MenuState,true);
- game.state.add('selecting_friends',LevelOneState);
-game.state.add('selecting_food',LevelTwoState);
-game.state.add('food_cuter',LevelThreeState);
-   };
-        
+        <script type="text/javascript" src="src/phaser.min.js"></script> 
+        <script type = "text/javascript" src ="src/game.js"></script> 
+              
     </script>
     </head>
 
     <body>
-      <div id="game_stage"></div>
     </body>  
 </html>  
